@@ -110,7 +110,8 @@
 							<td><?php echo $r['status']; ?></td>
 							<td>
 								<a class="btn modal-trigger blue" href="#tanggapan&id_aspirasi=<?php echo $r['id_aspirasi'] ?>">More</a>
-							<a class="btn red" onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="index.php?p=aspirasi_hapus&id_aspirasi=<?php echo $r['id_aspirasi'] ?>">Hapus</a>
+								<a class="btn red" onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" 
+									href="index.php?p=aspirasi_hapus&id_aspirasi=<?php echo $r['id_aspirasi'] ?>">Hapus</a> 
 							</td>
 				<!-- ------------------------------------------------------------------------------------------------------------------------------------ -->
 						<!-- Modal Structure -->

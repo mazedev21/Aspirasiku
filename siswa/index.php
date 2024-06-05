@@ -105,7 +105,6 @@ function redirect($location) {
 }
 
 $p = isset($_GET['p']) ? $_GET['p'] : 'dashboard';
-
 switch ($p) {
     case '':
     case 'dashboard':
