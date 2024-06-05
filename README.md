@@ -1,0 +1,1 @@
+echo "# Aspirasiku1.0"
