@@ -99,8 +99,36 @@
 				error_reporting(E_ALL);
 				ini_set('display_errors', 1);
 					$no = 1;
-					$aspirasi = mysqli_query($koneksi,"SELECT * FROM aspirasi INNER JOIN siswa ON aspirasi.nis=siswa.nis LEFT JOIN tanggapan ON aspirasi.id_aspirasi=tanggapan.id_aspirasi WHERE aspirasi.nis='".$_SESSION['data']['nis']."' AND (aspirasi.status = 'selesai' OR tanggapan.id_aspirasi IS NULL) ORDER BY aspirasi.id_aspirasi DESC");
-					while ($r = mysqli_fetch_assoc($aspirasi)) { ?>
+					$aspirasi = mysqli_query($koneksi, "
+						SELECT 
+							a.id_aspirasi, 
+							a.tgl_aspirasi, 
+							a.nis, 
+							a.kategori, 
+							a.isi_laporan, 
+							a.foto, 
+							a.status, 
+							s.nama, 
+							s.username, 
+							s.password, 
+							s.email, 
+							t.id_tanggapan, 
+							t.tgl_tanggapan, 
+							t.tanggapan, 
+							t.id_petugas 
+						FROM 
+							aspirasi a 
+						INNER JOIN 
+							siswa s ON a.nis = s.nis 
+						LEFT JOIN 
+							tanggapan t ON a.id_aspirasi = t.id_aspirasi 
+						WHERE 
+							a.nis = '".$_SESSION['data']['nis']."' 
+							AND (a.status = 'elesai' OR t.id_aspirasi IS NULL) 
+						ORDER BY 
+							a.id_aspirasi DESC
+					");
+					while ($r = mysqli_fetch_assoc($aspirasi)) { 				
 						<tr>
 							<td><?php echo $no++; ?></td>
 							<td><?php echo $r['nis']; ?></td>

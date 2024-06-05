@@ -113,7 +113,6 @@ switch ($p) {
 
     case 'aspirasi_hapus':
         $id_aspirasi = isset($_GET['id_aspirasi']) ? $_GET['id_aspirasi'] : '';
-
         // Debugging: Check if id_aspirasi is received
         if (!$id_aspirasi) {
             echo "Error: id_aspirasi is missing!";
