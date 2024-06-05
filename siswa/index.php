@@ -97,66 +97,34 @@
 
       <div class="col s12 m9">
       <?php 
-include_once 'koneksi.php';
-
-function redirect($location) {
-    header("Location: $location");
-    exit;
-}
-
-$p = isset($_GET['p']) ? $_GET['p'] : 'dashboard';
-switch ($p) {
-    case '':
-    case 'dashboard':
-        include_once 'dashboard.php';
-        break;
-
-    case 'aspirasi_hapus':
-        $id_aspirasi = isset($_GET['id_aspirasi']) ? $_GET['id_aspirasi'] : '';
-        // Debugging: Check if id_aspirasi is received
-        if (!$id_aspirasi) {
-            echo "Error: id_aspirasi is missing!";
-            exit;
-        }
-
-        $stmt = $koneksi->prepare("SELECT * FROM aspirasi WHERE id_aspirasi = ?");
-        $stmt->bind_param("i", $id_aspirasi);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($data = $result->fetch_assoc()) {
-            $foto = '../img/' . $data['foto'];
-            if (file_exists($foto) && is_writable($foto)) {
-                unlink($foto);
-            }
-            $stmt->close();
-
-            $stmt_delete = $koneksi->prepare("DELETE FROM aspirasi WHERE id_aspirasi = ?");
-            $stmt_delete->bind_param("i", $id_aspirasi);
-            $stmt_delete->execute();
-            $stmt_delete->close();
-
-            if ($data['status'] == "selesai") {
-                $stmt_delete_tanggapan = $koneksi->prepare("DELETE FROM tanggapan WHERE id_tanggapan = ?");
-                $stmt_delete_tanggapan->bind_param("i", $id_aspirasi);
-                $stmt_delete_tanggapan->execute();
-                $stmt_delete_tanggapan->close();
-            }
-            redirect('index.php?p=dashboard');
-        } else {
-            echo "Error: No record found for id_aspirasi = $id_aspirasi";
-            exit;
-        }
-        break;
-
-    case 'more':
-        include_once 'more.php';
-        break;
-
-    default:
-        include_once '404.php';
-        break;
-}
-?>
+		if(@$_GET['p']==""){
+			include_once 'dashboard.php';
+		}
+		elseif(@$_GET['p']=="dashboard"){
+			include_once 'dashboard.php';
+		}
+		elseif(@$_GET['p']=="aspirasi_hapus"){
+      $id_aspirasi = $_GET['id_aspirasi'];
+			$query=mysqli_query($koneksi,"SELECT * FROM aspirasi WHERE id_aspirasi='$id_aspirasi'");
+			$data=mysqli_fetch_assoc($query);
+			unlink('../img/'.$data['foto']);
+      $delete_kategori = mysqli_query($koneksi, "DELETE FROM aspirasi WHERE kategori='".$data['kategori']."' AND id_aspirasi='".$_GET['id_aspirasi']."'"); /**Parse error: syntax error, unexpected token "." in C:\xampp\htdocs\Aspirasiku\siswa\index.php on line 110 */
+			if($data['status']=="proses"){
+				$delete=mysqli_query($koneksi,"DELETE FROM aspirasi WHERE id_aspirasi='".$_GET['id_aspirasi']."'");
+				header('location:index.php?p=dashboard');
+			}
+			elseif($data['status']=="selesai"){
+				$delete=mysqli_query($koneksi,"DELETE FROM aspirasi WHERE id_aspirasi='".$_GET['id_aspirasi']."'");
+				if($delete){
+					$delete2=mysqli_query($koneksi,"DELETE FROM tanggapan WHERE id_aspirasi='".$_GET['id_aspirasi']."'");
+					header('location:index.php?p=dashboard');
+				}	
+      }
+		}
+		elseif(@$_GET['p']=="more"){
+			include_once 'more.php';
+		}
+	 ?>
 
 
 
