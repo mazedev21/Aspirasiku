@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body, table {
+			font-family: 'Times New Roman', Times, serif;
+		}
+	</style>
+</head>
+<body>
+
 <h2 style="text-align: center;">Aspirasiku</h2>
 <table border="2" style="width: 100%; height: 10%;">
 	<tr style="text-align: center;">
@@ -31,3 +42,6 @@
 <script type="text/javascript">
 	window.print();
 </script>
+
+</body>
+</html>
