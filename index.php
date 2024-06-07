@@ -15,11 +15,11 @@
 	<link rel="stylesheet" href="css/materialize.css">
 	<link rel="stylesheet" href="css/responsive.css">
 	<!-- ICONS -->
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="img/favicon.jpeg">
 
 </head>
-<body style="background: url(img/bgweb.jpg); background-size: cover;">
+<body style="background: url(img/bgweb.jpeg); background-size: cover;">
 
 	<div class="container">
 		
