@@ -80,9 +80,33 @@
 				$_SESSION['data']=$data2;
 				header('location:petugas/');
 			}
+			else if($data2['level']=="kurikulum"){
+				session_start();
+				$_SESSION['username']=$username;
+				$_SESSION['data']=$data2;
+				header('location:kurikulum/');
+			}
+			else if($data2['level']=="kesiswaan"){
+				session_start();
+				$_SESSION['username']=$username;
+				$_SESSION['data']=$data2;
+				header('location:kesiswaan/');
+			}
+			else if($data2['level']=="sarpra"){
+				session_start();
+				$_SESSION['username']=$username;
+				$_SESSION['data']=$data2;
+				header('location:sarpra/');
+			}
+			else if($data2['level']=="humas"){
+				session_start();
+				$_SESSION['username']=$username;
+				$_SESSION['data']=$data2;
+				header('location:humas/');
+			}
 		}
 		else{
-			echo "<script>alert('Gagal Login Sob')</script>";
+			echo "<script>alert('Gagal Login, Silahkan Coba Lagi')</script>";
 		}
 
 	}

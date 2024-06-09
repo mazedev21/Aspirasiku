@@ -63,22 +63,25 @@
 
 <h3 class="gray-text">Dashboard</h3>
 
-	<div class="row">
-		<div class="col s4">
-		  <div class="card black">
-		    <div class="card-content white-text">
-			<?php 
-				$query = mysqli_query($koneksi,"SELECT * FROM aspirasi WHERE status='proses'");
-				$jlmmember = mysqli_num_rows($query);
-				if($jlmmember<1){
-					$jlmmember=0;
-				}
-			 ?>
-		      <span class="card-title">Aspirasi Masuk<b class="right"><?php echo $jlmmember; ?></b></span>
-		      <p></p>
-		    </div>
-		  </div>
-		</div>	
+<div class="row">
+    <div class="col s4">
+        <div class="card black">
+            <div class="card-content white-text">
+                <?php 
+                    $query = mysqli_query($koneksi,"SELECT * FROM aspirasi WHERE status='proses' AND aspirasi.kategori='kesiswaan'");
+                    $jlmmember = mysqli_num_rows($query);
+                    if($jlmmember < 1){
+                        $jlmmember = 0;
+                    }
+                ?>
+                <a href="index.php?p=aspirasi" style="text-decoration: none; color: white;">
+                    <span class="card-title">Aspirasi Masuk <b class="right"><?php echo $jlmmember; ?></b></span>
+                </a>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
 
 		<div class="col s4">
 		    <div class="card blue">
@@ -90,7 +93,9 @@
 					$jlmmember=0;
 				}
 			 ?>
+			 <a href="index.php?p=respon" style="text-decoration: none; color: white;">
 		      <span class="card-title">Aspirasi Ditanggapi <b class="right"><?php echo $jlmmember; ?></b></span>
+			</a>
 		      <p></p>
 		    </div>
 		  </div>

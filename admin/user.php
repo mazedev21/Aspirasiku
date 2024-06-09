@@ -137,6 +137,22 @@
 						  <input value="petugas" class="with-gap" name="level" type="radio" <?php if($r['level']=="petugas"){echo "checked";} ?> />
 						  <span>Petugas</span>
 						</label>
+						<label>
+							<input value="kurikulum" class="with-gap" name="level" type="radio" <?php if($r['level']=="kurikulum"){echo "checked";} ?>/>
+							<span>Kurikulum</span>
+						</label>
+						<label>
+							<input value="kesiswaan" class="with-gap" name="level" type="radio" <?php if($r['level']=="kesiswaan"){echo "checked";} ?>/>
+							<span>Kesiswaan</span>
+						</label>
+						<label>
+							<input value="sarpra" class="with-gap" name="level" type="radio" <?php if($r['level']=="sarpra"){echo "checked";} ?>/>
+							<span>Sarana dan Prasarana</span>
+						</label>
+						<label>
+							<input value="humas" class="with-gap" name="level" type="radio" <?php if($r['level']=="humas"){echo "checked";} ?>/>
+							<span>Hubungan Masyarakat</span>
+						</label>
 					</p>
 				</div>
 				<div class="col s12 input-field">
@@ -195,6 +211,10 @@
 						<option selected disabled="">Pilih Level</option>
 						<option value="admin">Admin</option>
 						<option value="petugas">Petugas</option>
+						<option value="kurikulum">Kurikulum</option>
+						<option value="kesiswaan">Kesiswaan</option>
+						<option value="sarpra">Sarana dan Prasarana</option>
+						<option value="humas">Hubungan Masyarakat</option>
 					</select>
 				</div>
 				<div class="col s12 input-field">

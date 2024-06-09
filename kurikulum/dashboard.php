@@ -68,13 +68,15 @@
 		  <div class="card black">
 		    <div class="card-content white-text">
 			<?php 
-				$query = mysqli_query($koneksi,"SELECT * FROM aspirasi WHERE status='proses'");
+				$query = mysqli_query($koneksi,"SELECT * FROM aspirasi WHERE status='proses' AND aspirasi.kategori='kurikulum'");
 				$jlmmember = mysqli_num_rows($query);
 				if($jlmmember<1){
 					$jlmmember=0;
 				}
 			 ?>
+			  <a href="index.php?p=aspirasi" style="text-decoration: none; color: white;">
 		      <span class="card-title">Aspirasi Masuk<b class="right"><?php echo $jlmmember; ?></b></span>
+				</a>
 		      <p></p>
 		    </div>
 		  </div>
@@ -90,7 +92,9 @@
 					$jlmmember=0;
 				}
 			 ?>
+			  <a href="index.php?p=respon" style="text-decoration: none; color: white;">
 		      <span class="card-title">Aspirasi Ditanggapi <b class="right"><?php echo $jlmmember; ?></b></span>
+				</a>
 		      <p></p>
 		    </div>
 		  </div>
