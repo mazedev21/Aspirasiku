@@ -6,61 +6,76 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
 	<style>
 	/* Aturan CSS responsif */
-@media screen and (max-width: 600px) {
-    table.responsive-table {
+    
+@@media screen and (max-width: 600px) {
+    .gray-text {
+        font-size: 1.2em;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 20px;
+        font-weight: bold;
+    }
+
+    .col {
         width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-        overflow-x: auto;
     }
 
-    table.responsive-table th,
-    table.responsive-table td {
-        padding: 10px;
-        text-align: left;
-        min-width: 100px;
-        word-wrap: break-word;
-		white-space: nowrap;
-    }
-
-    table.responsive-table th {
-        background-color: #f2f2f2;
-    }
-
-    /* Lebih banyak aturan CSS responsif sesuai kebutuhan */
-    /* Misalnya, untuk form, gambar, dan tombol */
-    form {
-        padding: 20px;
-    }
-
-    form label,
-    form input[type="file"],
-    form input[type="submit"] {
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .btn {
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    /* Aturan CSS untuk modal jika diperlukan */
     .modal-content {
-        padding: 20px;
-    }
-
-    .modal-content p {
-        margin-bottom: 10px;
+        padding: 15px;
     }
 
     .modal-footer {
-        padding: 10px 20px;
+        padding: 10px 15px;
+    }
+
+    /* Tambahkan aturan CSS untuk tabel responsif */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+		border-collapse: collapse;
+        margin-bottom: 20px;
+        margin-top: 50px; /* Mengurangi jarak atas tabel */
+        overflow-x: auto; /* Memberikan scroll horizontal jika perlu */
+		display: flex;
+		flex-wrap: wrap;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+		flex: 1; /* Mengatur agar setiap kolom tabel memiliki proporsi yang sama */
+        border: 1px solid #ddd; /* Menambahkan border untuk memperjelas batas antar kolom */
+		min-width: 100px; /* Menentukan lebar minimal kolom */
+        word-wrap: break-word; /* Mengizinkan pemecahan kata jika teks terlalu panjang */
+		min-height: 10px; /* Menentukan tinggi minimal untuk setiap kolom */
+		max-height: 13px;
+        display: flex; /* Menyesuaikan tata letak isi di dalam kolom */
+        align-items: center; /* Memusatkan isi vertikal di dalam kolom */
+        justify-content: center; /* Memusatkan isi horizontal di dalam kolom */
+    }
+
+    /* Aturan CSS untuk baris pada tabel */
+    tr {
+        border-bottom: 1px solid #ddd;
+		
+    }
+
+    /* Aturan CSS untuk tajuk kolom pada tabel */
+    th {
+        background-color: #f2f2f2;
+    }
+
+    /* Aturan CSS untuk tombol di dalam tabel */
+    .btn {
+        margin-bottom: 5px;
+    }
+
+    /* Aturan CSS untuk modal */
+    .modal {
+        max-width: 100%;
+        width: 100%;
     }
 }
 
