@@ -1,40 +1,3 @@
-<style>
-  /* CSS untuk tombol sidenav responsif */
-@media screen and (max-width: 992px) {
-  .sidenav-trigger {
-    display: block; /* Tampilkan tombol sidenav */
-    margin-top: 10px;
-    width: 47px;
-    height: 40px;  
-  }
-  .sidenav-custom{
-    background-color: #0D47A1 !important;
-    color: white !important;
-  }
-  .sidenav-custom .user-view{
-    background-color: #1565C0;
-  }
-  .sidenav-custom a{
-    color: white !important;
-  }
-  .sidenav-custom .user-view a{
-    color: white !important;
-  }
-  .sidenav-custom .material-icons {
-            color: white !important; /* Ensure all material icons are white */
-        }
-  .sidenav-fixed {
-    transform: translateX(-100%); /* Sembunyikan sidenav */
-  }
-}
-
-/* Tombol sidenav */
-.sidenav-trigger {
-  display: none; /* Sembunyikan tombol sidenav */
-}
-
-</style>
-
 <?php 
 	session_start();
 	error_reporting(0);
@@ -74,7 +37,42 @@
       
       <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
       
-      
+      <style>
+    /* CSS untuk tombol sidenav responsif */
+    @media screen and (max-width: 600px) {
+      .sidenav-trigger {
+        display: block; /* Tampilkan tombol sidenav */
+        margin-top: 10px;
+        width: 47px;
+        height: 40px;  
+      }
+    }
+      .sidenav-custom {
+        background-color: #0D47A1 !important;
+        color: white !important;
+      }
+      .sidenav-custom .user-view {
+        background-color: #1565C0;
+      }
+      .sidenav-custom a {
+        color: white !important;
+      }
+      .sidenav-custom .user-view a {
+        color: white !important;
+      }
+      .sidenav-custom .material-icons {
+        color: white !important; /* Ensure all material icons are white */
+      }
+      .sidenav-fixed {
+        transform: translateX(-100%); /* Sembunyikan sidenav */
+      }
+
+    /* Tombol sidenav */
+    .sidenav-trigger {
+      display: none; /* Sembunyikan tombol sidenav */
+    }
+  </style>
+
       <script type="text/javascript">
         $(document).ready( function () {
           $('#example').DataTable();
@@ -85,32 +83,26 @@
 
     </head>
 
-    <body style="background:url(../img/bgweb.jpg); background-size: cover;">
-
-    <div class="row">
-      <div class="col s12 m3">
-          <ul id="slide-out" class="sidenav sidenav-fixed sidenav-custom">
-              <li>
-                  <div class="user-view">
-                      <div class="background">
-                          <img src="../img/bgweb.jpg">
-                      </div>
-                      <a href="#user"><img class="circle" src="https://th.bing.com/th/id/R.3e6e1a2ed7fa6f61cd5d6e97f7c4b0f4?rik=Rve48xGGi6SNgA&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_424953.png&ehk=OFuupCSCtihF7ZFwMMvJXN8RFsB2GIUG%2fUOce0qwB5U%3d&risl=&pid=ImgRaw&r=0"></a>
-                      <a href="#name"><span class="white-text name"><?php echo ucwords($_SESSION['data']['nama']); ?></span></a> Aspirasiku | Dikembangkan oleh <a href='https://bit.ly/mpkbegarlist' title='MPK SMAN 2 Magelang' target='_blank'>MPK SMAN 2 Magelang</a>
-					  
-                  </div>
-              </li>
-              <li><a href="index.php?p=dashboard"><i class="material-icons">dashboard</i>Dashboard</a></li>
-              <li>
-                  <div class="divider"></div>
-              </li>
-              <li><a class="waves-effect" href="../index.php?p=logout"><i class="material-icons">logout</i>Logout</a></li>
-          </ul>
-
-          <a href="#" data-target="slide-out" class="btn sidenav-trigger"><i class="material-icons">menu</i></a>
-      </div>
-
-      <div class="col s12 m9">
+    <body style="background:url(../img/webbg.png); background-size: cover;">
+  <div class="row">
+    <div class="col s12 m3">
+      <ul id="slide-out" class="sidenav sidenav-fixed sidenav-custom">
+        <li>
+          <div class="user-view">
+            <div class="background">
+              <img src="../img/webbg.png">
+            </div>
+            <a href="#user"><img class="circle" src="https://th.bing.com/th/id/R.3e6e1a2ed7fa6f61cd5d6e97f7c4b0f4?rik=Rve48xGGi6SNgA&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_424953.png&ehk=OFuupCSCtihF7ZFwMMvJXN8RFsB2GIUG%2fUOce0qwB5U%3d&risl=&pid=ImgRaw&r=0"></a>
+            <a href="#name"><span class="white-text name"><?php echo ucwords($_SESSION['data']['nama']); ?></span></a> Aspirasiku | Dikembangkan oleh <a href='https://bit.ly/mpkbegarlist' title='MPK SMAN 2 Magelang' target='_blank'>MPK SMAN 2 Magelang</a>
+          </div>
+        </li>
+        <li><a href="index.php?p=dashboard"><i class="material-icons">dashboard</i>Dashboard</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect" href="../index.php?p=logout"><i class="material-icons">logout</i>Logout</a></li>
+      </ul>
+      <a href="#" data-target="slide-out" class="btn sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+    <div class="col s12 m9">
       <?php 
 		if(@$_GET['p']==""){
 			include_once 'dashboard.php';

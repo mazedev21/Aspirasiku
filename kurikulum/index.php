@@ -1,11 +1,3 @@
-<style>
-@media screen and (max-width: 600px) {
-  .sidenav-trigger{
-    margin-top: 10px;
-  }
-}
-</style>
-
 <?php 
 	session_start();
 	include '../conn/koneksi.php';
@@ -50,21 +42,45 @@
         } );
       
       </script>
+            	<style>
+		/* CSS untuk tombol sidenav responsif */
+		@media screen and (max-width: 600px) {
+			.sidenav-trigger {
+				margin-top: 10px;
+			}
+		}
+		.sidenav-custom {
+			background-color: #0D47A1 !important; /* Dark blue */
+			color: white !important;
+		}
+		.sidenav-custom .user-view {
+			background-color: #1565C0; /* Light blue */
+		}
+		.sidenav-custom a {
+			color: white !important;
+		}
+		.sidenav-custom .user-view a {
+			color: white !important;
+		}
+		.sidenav-custom .material-icons {
+			color: white !important; /* Ensure all material icons are white */
+		}
+	</style>
 
     </head>
 
-    <body style="background:url(../img/bgweb.jpg); background-size: cover;">
+    <body style="background:url(../img/webbg.png); background-size: cover;">
 
     <div class="row">
       <div class="col s12 m3">
-          <ul id="slide-out" class="sidenav sidenav-fixed">
+          <ul id="slide-out" class="sidenav sidenav-fixed sidenav-custom">
               <li>
                   <div class="user-view">
                       <div class="background">
-                          <img src="../img/bgweb.jpg">
+                          <img src="../img/webbg.png">
                       </div>
                       <a href="#user"><img class="circle" src="https://th.bing.com/th/id/R.3e6e1a2ed7fa6f61cd5d6e97f7c4b0f4?rik=Rve48xGGi6SNgA&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_424953.png&ehk=OFuupCSCtihF7ZFwMMvJXN8RFsB2GIUG%2fUOce0qwB5U%3d&risl=&pid=ImgRaw&r=0"></a>
-                      <a href="#name"><span class="blue-text name"><?php echo ucwords($_SESSION['data']['nama_petugas']); ?></span></a> Aspirasiku | Dikembangkan oleh <a href='https://bit.ly/mpkbegarlist' title='MPK SMAN 2 Magelang' target='_blank'>MPK SMAN 2 Magelang</a>
+                      <a href="#name"><span class="white-text name"><?php echo ucwords($_SESSION['data']['nama_petugas']); ?></span></a> Aspirasiku | Dikembangkan oleh <a href='https://bit.ly/mpkbegarlist' title='MPK SMAN 2 Magelang' target='_blank'>MPK SMAN 2 Magelang</a>
 					  
                   </div>
               </li>

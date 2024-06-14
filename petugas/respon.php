@@ -126,7 +126,7 @@
 				<p>Tanggal Ditanggapi : <?php echo $r['tgl_tanggapan']; ?></p>
 				<?php 
 					if($r['foto']=="kosong"){ ?>
-						<img src="../img/noImage.png" width="100">
+						<img src="../img/noImage.jpg" width="100">
 				<?php	}else{ ?>
 					<img width="100" src="../img/<?php echo $r['foto']; ?>">
 				<?php }

@@ -60,7 +60,7 @@
     }, 2000); // Kotak notifikasi akan hilang setelah 3 detik
     } // Script JS untuk notifikasi pendaftaran berhasil
 </script>
-<body style="background: url(img/bgweb.jpg); background-size: cover;">
+<body style="background: url(img/webbg.png); background-size: cover;">
 <html>
 <div id="notification" class="notification"></div>
 <div id="loading" class="loading">

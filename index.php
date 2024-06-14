@@ -19,7 +19,7 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="img/favicon.jpeg">
 
 </head>
-<body style="background: url(img/bgweb.jpeg); background-size: cover;">
+<body style="background: url(img/webbg.png); background-size: cover;">
 
 	<div class="container">
 		

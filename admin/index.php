@@ -127,7 +127,7 @@ if (isset($_GET['p'])) {
 	<link rel="icon" type="image/png" sizes="96x96" href="img/favicon.jpeg">
 </head>
 
-<body style="background:url(../img/bgweb.jpeg); background-size: cover;">
+<body style="background:url(../img/webbg.png); background-size: cover;">
 
 <div class="row">
     <div class="col s12 m3">
@@ -135,7 +135,7 @@ if (isset($_GET['p'])) {
             <li>
                 <div class="user-view">
                     <div class="background">
-                        <img src="../img/bgweb.jpg">
+                        <img src="../img/webbg.png">
                     </div>
                     <a href="#user"><img class="circle"
                                          src="https://th.bing.com/th/id/R.3e6e1a2ed7fa6f61cd5d6e97f7c4b0f4?rik=Rve48xGGi6SNgA&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_424953.png&ehk=OFuupCSCtihF7ZFwMMvJXN8RFsB2GIUG%2fUOce0qwB5U%3d&risl=&pid=ImgRaw&r=0"></a>

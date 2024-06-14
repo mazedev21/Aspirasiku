@@ -79,6 +79,10 @@
     }
 }
 
+.responsive-table-wrapper {
+        max-height: 400px; /* Atur tinggi maksimum tabel */
+        overflow-y: auto; /* Aktifkan overflow vertikal */
+    }
 </style>
 </head>
 <body>
@@ -106,6 +110,7 @@
                 </form>
             </td>
             <td>
+                <div class="responsive-table-wrapper">
                 <table border="3" class="responsive-table striped highlight">
                     <thead>
                         <tr>
@@ -183,7 +188,7 @@
                                     <p>Tanggal Ditanggapi : <?php echo $r['tgl_tanggapan']; ?></p>
                                     <?php 
                                     if ($r['foto'] == "kosong") { ?>
-                                        <img src="../img/noImage.png" width="100">
+                                        <img src="../img/noImage.jpg" width="100">
                                     <?php } else { ?>
                                         <img width="100" src="../img/<?php echo $r['foto']; ?>">
                                     <?php } ?>
@@ -200,6 +205,7 @@
                         <?php } ?>
                     </tbody>
                 </table>
+                </div>
             </td>
         </tr>
     </table>
@@ -254,7 +260,7 @@ if (isset($_POST['kirim'])) {
         $laporan = mysqli_real_escape_string($koneksi, $_POST['laporan']);
         
         // Inserting data into the database without file
-        $query = "INSERT INTO aspirasi (tgl_aspirasi, nis, kategori, isi_laporan, status) VALUES ('$tgl', '$nis', '$kategori', '$laporan', 'proses')";
+        $query = "INSERT INTO aspirasi (tgl_aspirasi, nis, kategori, isi_laporan, foto, status) VALUES ('$tgl', '$nis', '$kategori', '$laporan', 'noImage.jpg', 'proses')";
         $result = mysqli_query($koneksi, $query);
 
         if ($result) {

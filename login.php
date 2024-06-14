@@ -6,8 +6,8 @@
       padding: 50px;
       width: 40%;
       margin: 0 auto;
-      margin-top: 10%;
-      background-color: rgba(50, 50, 50, 0.1); /* Nilai alpha (0.7) menentukan tingkat transparansi */
+      margin-top: 4%;
+      background-color: rgba(21, 101, 192, 0.1); /* Nilai alpha (0.7) menentukan tingkat transparansi */
       border-radius: 10px; /* Untuk membuat sudut kotak */
    }
 	    /* Tambahkan media queries untuk ukuran layar tertentu */
@@ -17,7 +17,7 @@
         }
 	}
 </style>
-<body style="background: url(img/bgweb.jpg); background-size: cover;">
+<body style="background: url(img/webbg.png); background-size: cover;">
 <div class="cont">
 <h3 style="text-align: center;" class="blue-text">Menu Login</h3>
 <br><center><p>Dikembangkan oleh <a href='https://bit.ly/mpkbegarlist' title='MPK SMAN 2 Magelang' target='_blank'>MPK SMAN 2 Magelang</a></p></center>
