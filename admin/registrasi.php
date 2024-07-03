@@ -97,6 +97,9 @@
           <tbody>
             
 	<?php 
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
 		$no=1;
 		$query = mysqli_query($koneksi,"SELECT * FROM siswa ORDER BY nis ASC");
 		while ($r=mysqli_fetch_assoc($query)) { ?>
@@ -105,7 +108,7 @@
 			<td><?php echo $r['nis']; ?></td>
 			<td><?php echo $r['nama']; ?></td>
 			<td><?php echo $r['username']; ?></td>
-			<td><?php echo $r['email']; ?></td>
+			<td><?php echo $r['telp']; ?></td>
 			<td><a class="btn blue modal-trigger" href="#regis_edit?nis=<?php echo $r['nis'] ?>">Edit</a> <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" class="btn red" href="index.php?p=regis_hapus&nis=<?php echo $r['nis'] ?>">Hapus</a></td>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------ -->
@@ -180,7 +183,7 @@
 					<input id="password" type="password" name="password"><br><br>
 				</div>
 				<div class="col s12 input-field">
-					<label for="telp">Telp</label>
+					<label for="telp">Email</label>
 					<input id="telp" type="number" name="telp"><br><br>
 				</div>
 				<div class="col s12 input-field">
@@ -188,17 +191,36 @@
 				</div>
 			</form>
 
-			<?php 
-				if(isset($_POST['simpan'])){
-					$password = md5($_POST['password']);
+			<?php
+if (isset($_POST['simpan'])) {
+    $nis = $_POST['nis'];
+    $nama = $_POST['nama'];
+    $username = $_POST['username'];
+    $password = md5($_POST['password']);
+    $telp = $_POST['telp'];
+	
+	echo "NIS: $nis<br>";
+    echo "Nama: $nama<br>";
+    echo "Username: $username<br>";
+    echo "Password: $password<br>";
+    echo "Telp: $telp<br>";
 
-					$query=mysqli_query($koneksi,"INSERT INTO siswa VALUES ('".$_POST['nis']."','".$_POST['nama']."','".$_POST['username']."','".$password."','".$_POST['telp']."')");
-					if($query){
-						echo "<script>alert('Data Tesimpan')</script>";
-						echo "<script>location='location:index.php?p=registrasi';</script>";
-					}
-				}
-			 ?>
+    if (!empty($nis) && !empty($nama) && !empty($username) && !empty($password) && !empty($telp)) {
+        $query = "INSERT INTO siswa (nis, nama, username, password, telp) VALUES ('$nis', '$nama', '$username', '$password', '$telp')";
+        if (mysqli_query($koneksi, $query)) {
+            echo "<script>alert('Data Tersimpan')</script>";
+            echo "<script>location='index.php?p=registrasi';</script>";
+        } else {
+            error_log("Error: " . $query . " - " . mysqli_error($koneksi));
+            echo "Error: " . $query . "<br>" . mysqli_error($koneksi);
+        }
+    } else {
+        echo "<script>alert('Semua field harus diisi.')</script>";
+    }
+}
+?>
+
+
           </div>
           <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-black btn-flat">Close</a>

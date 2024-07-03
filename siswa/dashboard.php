@@ -141,7 +141,7 @@
                                 s.nama, 
                                 s.username, 
                                 s.password, 
-                                s.email, 
+                                s.telp, 
                                 t.id_tanggapan, 
                                 t.tgl_tanggapan, 
                                 t.tanggapan, 
