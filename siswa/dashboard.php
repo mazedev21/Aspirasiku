@@ -152,9 +152,8 @@
                                 siswa s ON a.nis = s.nis 
                             LEFT JOIN 
                                 tanggapan t ON a.id_aspirasi = t.id_aspirasi 
-                            WHERE 
-                                a.nis = '" . $_SESSION['data']['nis'] . "' 
-                                AND (a.status = 'selesai' OR t.id_aspirasi IS NULL) 
+                            WHERE a.nis = '" . $_SESSION['data']['nis'] . "' 
+                                AND (a.status = 'selesai' OR t.id_aspirasi IS NULL)
                             ORDER BY 
                                 a.id_aspirasi DESC
                         ";

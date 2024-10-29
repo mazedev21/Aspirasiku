@@ -36,7 +36,7 @@
 }
 #togglePassword{
     position: absolute; /* Mengatur posisi tombol */
-    top: 74%; /* Mengatur posisi vertikal ke tengah */
+    top: 70%; /* Mengatur posisi vertikal ke tengah */
     right: 50px; /* Mengatur posisi horizontal ke pojok kanan */
     transform: translateY(0%); /* Menggeser tombol ke atas setengah tinggi */
     background-color: transparent;
@@ -60,7 +60,7 @@
     }, 2000); // Kotak notifikasi akan hilang setelah 3 detik
     } // Script JS untuk notifikasi pendaftaran berhasil
 </script>
-<body style="background: url(img/webbg.png); background-size: cover;">
+<body style="background: url(img/bgweb1.jpg); background-size: cover;">
 <html>
 <div id="notification" class="notification"></div>
 <div id="loading" class="loading">
@@ -73,10 +73,6 @@
 		<div class="input_field">
 			<label for="username">Username</label>
 			<input id="username" type="text" name="username" required>
-		</div>
-        <div class="input_field">
-			<label for="email">Email</label>
-			<input id="email" type="text" name="email" required>
 		</div>
         <div class="input_field">
             <label for="nama">Nama Lengkap</label>
@@ -101,13 +97,12 @@
 // Periksa apakah data dikirimkan melalui metode POST
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST['username'];
-    $email = $_POST['email'];
     $nama = $_POST['nama'];
     $nis = $_POST['nis'];
     $password = md5($_POST['password']);
     
     // Lakukan validasi sederhana (Anda dapat menambahkan validasi lebih lanjut sesuai kebutuhan)
-    if (empty($username) || empty($email) || empty($nama) || empty($nis) ||empty($password)) {
+    if (empty($username) || empty($nama) || empty($nis) ||empty($password)) {
         echo "Semua bidang harus diisi.";
     } else {
     // Koneksi ke database
@@ -130,11 +125,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "<style>.notification { background-color: #ff0000; }</style>";
     } else{
     // Siapkan pernyataan SQL untuk disiapkan
-    $stmt = $koneksi->prepare("INSERT INTO siswa (nis, nama, username, password, email) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $koneksi->prepare("INSERT INTO siswa (nis, nama, username, password) VALUES (?, ?, ?, ?)");
     if ($stmt === false) {
         die("Pernyataan SQL tidak dapat dipersiapkan: " . $koneksi->error);
     }
-    $stmt->bind_param("sssss", $nis, $nama, $username, $password, $email);
+    $stmt->bind_param("ssss", $nis, $nama, $username, $password);
 
     // Lakukan pengeksekusian dan periksa apakah berhasil
     if ($stmt->execute()) {

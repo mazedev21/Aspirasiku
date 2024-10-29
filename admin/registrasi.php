@@ -90,7 +90,6 @@
 					<th>NIS</th>
 					<th>Nama</th>
 					<th>Username</th>
-					<th>Email</th>
                 	<th>Opsi</th>
               </tr>
           </thead>
@@ -108,7 +107,6 @@
 			<td><?php echo $r['nis']; ?></td>
 			<td><?php echo $r['nama']; ?></td>
 			<td><?php echo $r['username']; ?></td>
-			<td><?php echo $r['telp']; ?></td>
 			<td><a class="btn blue modal-trigger" href="#regis_edit?nis=<?php echo $r['nis'] ?>">Edit</a> <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" class="btn red" href="index.php?p=regis_hapus&nis=<?php echo $r['nis'] ?>">Hapus</a></td>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------ -->
@@ -130,17 +128,13 @@
 					<input id="username" type="text" name="username" value="<?php echo $r['username']; ?>"><br><br>
 				</div>
 				<div class="col s12 input-field">
-					<label for="telp">Telp</label>
-					<input id="telp" type="number" name="telp" value="<?php echo $r['telp']; ?>"><br><br>
-				</div>
-				<div class="col s12 input-field">
 					<input type="submit" name="Update" value="Simpan" class="btn right">
 				</div>
 			</form>
 
 			<?php 
 				if(isset($_POST['Update'])){
-					$update=mysqli_query($koneksi,"UPDATE siswa SET nis='".$_POST['nis']."',nama='".$_POST['nama']."',username='".$_POST['username']."',telp='".$_POST['telp']."' WHERE nis='".$r['nis']."' ");
+					$update=mysqli_query($koneksi,"UPDATE siswa SET nis='".$_POST['nis']."',nama='".$_POST['nama']."',username='".$_POST['username']."' WHERE nis='".$r['nis']."' ");
 					if($update){
 						echo "<script>alert('Data Tersimpan')</script>";
 						echo "<script>location='location:index.php?p=registrasi';</script>";
@@ -183,10 +177,6 @@
 					<input id="password" type="password" name="password"><br><br>
 				</div>
 				<div class="col s12 input-field">
-					<label for="telp">Email</label>
-					<input id="telp" type="number" name="telp"><br><br>
-				</div>
-				<div class="col s12 input-field">
 					<input type="submit" name="simpan" value="Simpan" class="btn right">
 				</div>
 			</form>
@@ -197,16 +187,14 @@ if (isset($_POST['simpan'])) {
     $nama = $_POST['nama'];
     $username = $_POST['username'];
     $password = md5($_POST['password']);
-    $telp = $_POST['telp'];
 	
 	echo "NIS: $nis<br>";
     echo "Nama: $nama<br>";
     echo "Username: $username<br>";
     echo "Password: $password<br>";
-    echo "Telp: $telp<br>";
 
-    if (!empty($nis) && !empty($nama) && !empty($username) && !empty($password) && !empty($telp)) {
-        $query = "INSERT INTO siswa (nis, nama, username, password, telp) VALUES ('$nis', '$nama', '$username', '$password', '$telp')";
+    if (!empty($nis) && !empty($nama) && !empty($username) && !empty($password)) {
+        $query = "INSERT INTO siswa (nis, nama, username, password) VALUES ('$nis', '$nama', '$username', '$password')";
         if (mysqli_query($koneksi, $query)) {
             echo "<script>alert('Data Tersimpan')</script>";
             echo "<script>location='index.php?p=registrasi';</script>";

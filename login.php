@@ -17,7 +17,7 @@
         }
 	}
 </style>
-<body style="background: url(img/webbg.png); background-size: cover;">
+<body style="background: url(img/bgweb1.jpg); background-size: cover;">
 <div class="cont">
 <h3 style="text-align: center;" class="blue-text">Menu Login</h3>
 <br><center><p>Dikembangkan oleh <a href='https://bit.ly/mpkbegarlist' title='MPK SMAN 2 Magelang' target='_blank'>MPK SMAN 2 Magelang</a></p></center>

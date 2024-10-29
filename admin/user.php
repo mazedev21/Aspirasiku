@@ -89,7 +89,6 @@
 				<th>No</th>
 				<th>Nama</th>
 				<th>Username</th>
-				<th>Telephone</th>
 				<th>level</th>
 				<th>Opsi</th>
               </tr>
@@ -104,7 +103,6 @@
 			<td><?php echo $no++; ?></td>
 			<td><?php echo $r['nama_petugas']; ?></td>
 			<td><?php echo $r['username']; ?></td>
-			<td><?php echo $r['telp_petugas']; ?></td>
 			<td><?php echo $r['level']; ?></td>
 			<td><a class="btn blue modal-trigger" href="#user_edit<?php echo $r['id_petugas'] ?>">Edit</a> <a class="red btn" onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="index.php?p=user_hapus&id_petugas=<?php echo $r['id_petugas'] ?>">Hapus</a></td>
 
@@ -122,10 +120,6 @@
 				<div class="col s12 input-field">
 					<label for="username">Username</label>		
 					<input id="username" type="text" name="username" value="<?php echo $r['username']; ?>"><br><br>
-				</div>
-				<div class="col s12 input-field">
-					<label for="telp">Telp</label>
-					<input id="telp" type="number" name="telp" value="<?php echo $r['telp_petugas']; ?>"><br><br>
 				</div>
 				<div class="col s12 input-field">
 					<p>
@@ -163,7 +157,7 @@
 			<?php 
 				if(isset($_POST['Update'])){
 					// echo $_POST['nama'].$_POST['username'].$_POST['telp'].$_POST['level'];
-					$update=mysqli_query($koneksi,"UPDATE petugas SET nama_petugas='".$_POST['nama']."',username='".$_POST['username']."',telp_petugas='".$_POST['telp']."',level='".$_POST['level']."' WHERE id_petugas='".$_POST['id_petugas']."' ");
+					$update=mysqli_query($koneksi,"UPDATE petugas SET nama_petugas='".$_POST['nama']."',username='".$_POST['username']."',level='".$_POST['level']."' WHERE id_petugas='".$_POST['id_petugas']."' ");
 					if($update){
 						echo "<script>alert('Data di Update')</script>";
 						echo "<script>location='index.php?p=user'</script>";
@@ -201,10 +195,6 @@
 					<label for="password">Password</label>
 					<input id="password" type="password" name="password"><br><br>
 				</div>
-				<div class="col s12 input-field">
-					<label for="telp">Telp</label>
-					<input id="telp" type="number" name="telp"><br><br>
-				</div>
 
 				<div class="col s12 input-field">
 					<select class="default" name="level">
@@ -226,7 +216,7 @@
 				if(isset($_POST['input'])){
 					$password = md5($_POST['password']);
 
-					$query=mysqli_query($koneksi,"INSERT INTO petugas VALUES (NULL,'".$_POST['nama']."','".$_POST['username']."','".$password."','".$_POST['telp']."','".$_POST['level']."')");
+					$query=mysqli_query($koneksi,"INSERT INTO petugas VALUES (NULL,'".$_POST['nama']."','".$_POST['username']."','".$password."','".$_POST['level']."')");
 					if($query){
 						echo "<script>alert('Data Ditambahkan')</script>";
 						echo "<script>location='index.php?p=user'</script>";
