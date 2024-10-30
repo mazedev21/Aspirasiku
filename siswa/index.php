@@ -46,40 +46,33 @@ if (!isset($_SESSION['data']['nis'])) {
       <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
       
       <style>
-    /* CSS untuk tombol sidenav responsif */
-    @media screen and (max-width: 600px) {
-      .sidenav-trigger {
-        display: block; /* Tampilkan tombol sidenav */
-        margin-top: 10px;
-        width: 47px;
-        height: 40px;  
-      }
-    }
-      .sidenav-custom {
-        background-color: #0D47A1 !important;
-        color: white !important;
-      }
-      .sidenav-custom .user-view {
-        background-color: #1565C0;
-      }
-      .sidenav-custom a {
-        color: white !important;
-      }
-      .sidenav-custom .user-view a {
-        color: white !important;
-      }
-      .sidenav-custom .material-icons {
-        color: white !important; /* Ensure all material icons are white */
-      }
-      .sidenav-fixed {
-        transform: translateX(-100%); /* Sembunyikan sidenav */
-      }
+        @media screen and (max-width:600px) {
+            .sidenav-trigger {
+                margin-top: 10px;
+            }
+        }
 
-    /* Tombol sidenav */
-    .sidenav-trigger {
-      display: none; /* Sembunyikan tombol sidenav */
-    }
-  </style>
+        .sidenav-custom {
+            background-color: #0D47A1 !important; /* Dark blue background color */
+            color: white !important; /* White text color */
+        }
+
+        .sidenav-custom .user-view {
+            background-color: #1565C0; /* Slightly lighter blue for user view background */
+        }
+
+        .sidenav-custom a {
+            color: white !important; /* Ensure all links are white */
+        }
+
+        .sidenav-custom .user-view a {
+            color: white !important; /* Ensure user view links are white */
+        }
+
+        .sidenav-custom .material-icons {
+            color: white !important; /* Ensure all material icons are white */
+        }
+    </style>
 
       <script type="text/javascript">
         $(document).ready( function () {
@@ -88,13 +81,27 @@ if (!isset($_SESSION['data']['nis'])) {
         } );
       
       </script>
+      <script>
+        window.addEventListener('resize', function(){
+          if (window.innerWidth < 768) {
+            document.getElementById('sidenav').style.display = 'none';
+          } 
+        }); 
+
+        document.addEventListener('click', function(event){
+          let sidenav = document.getElementById('sidenav');
+          if (!sidenav.contains(event.target) && window.innerWidth < 768) {
+            sidenav.style.display = 'none';
+          }
+        });
+      </script>
 
     </head>
 
     <body style="background:url(../img/bgweb1.jpg); background-size: cover;">
   <div class="row">
     <div class="col s12 m3">
-      <ul id="slide-out" class="sidenav sidenav-fixed sidenav-custom">
+      <ul id="slide-out" class="sidenav sidenav-custom">
         <li>
           <div class="user-view">
             <div class="background">
