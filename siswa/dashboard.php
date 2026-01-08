@@ -38,7 +38,7 @@
         margin-bottom: 20px;
         margin-top: 50px; /* Mengurangi jarak atas tabel */
         overflow-x: auto; /* Memberikan scroll horizontal jika perlu */
-		display: flex;
+		display: block;
 		flex-wrap: wrap;
     }
 
@@ -80,8 +80,11 @@
 }
 
 .responsive-table-wrapper {
+        display: block;
         max-height: 400px; /* Atur tinggi maksimum tabel */
+        max-width: 440px;
         overflow-y: auto; /* Aktifkan overflow vertikal */
+        overflow-x: auto;
     }
 </style>
 </head>

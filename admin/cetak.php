@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +29,10 @@
 		.kop-center p {
 			margin: 5px 0;
 			font-size: 14px;
+		}
+
+		.tanda-tangan{
+			align-items: center;
 		}
 	</style>
 </head>
@@ -80,6 +85,30 @@
 	<?php	}
 	 ?>
 </table>
+<div style="text-align: right;">
+	<p id="tanggal" style="text-align: center;">Magelang,&nbsp;</p>
+	<p style="text-align: center;">Ketua MPK</p>
+	<br><br><br>
+	<div style="border-bottom: 2px dotted; width: 20%; margin: 0 auto;"></div>
+
+</div>
+<script>
+	//Buat objek tanggal saat ini
+	const today = new Date();
+
+	//Array nama bulan
+	const months = [
+		"Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+		];
+	
+	//Ambil tanggal, bulan, tahun
+	const day = today.getDate();
+	const month = months[today.getMonth()];
+	const year = today.getFullYear();
+
+	//Format dan tampilkan
+	document.getElementById ('tanggal').innerText += `${day} ${month} ${year}`;
+</script>
 <script type="text/javascript">
 	window.print();
 </script>

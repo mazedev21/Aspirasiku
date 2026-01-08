@@ -77,7 +77,7 @@
             <h3 class="gray-text">Aspirasi</h3>
           </div>
         </div>
-
+        <button id="hapusSemuaAspirasi" class="btn red">Hapus Semua Aspirasi</button>
         <table id="example" class="display responsive-table" style="width:100%">
           <thead>
               <tr>
@@ -169,4 +169,9 @@
              ?>
 
           </tbody>
-        </table>        
+        </table>    
+
+        <!-- Tambahkan SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="../js/custom.js"></script>

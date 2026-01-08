@@ -46,6 +46,17 @@
     display : flex;
     justify-content : center;
 }
+    /* Media query untuk perangkat mobile */
+    @media only screen and (max-width: 600px) {
+      .cont {
+        width: 90%;
+        padding: 15px;
+        margin-top: 5%;
+      }
+      #togglePassword {
+        right: 10px;
+      }
+    }
 </style>
 <script>
     function showNotification(message) {

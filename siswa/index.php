@@ -53,25 +53,15 @@ if (!isset($_SESSION['data']['nis'])) {
         }
 
         .sidenav-custom {
-            background-color: #0D47A1 !important; /* Dark blue background color */
-            color: white !important; /* White text color */
-        }
-
-        .sidenav-custom .user-view {
-            background-color: #1565C0; /* Slightly lighter blue for user view background */
-        }
-
-        .sidenav-custom a {
-            color: white !important; /* Ensure all links are white */
-        }
-
-        .sidenav-custom .user-view a {
-            color: white !important; /* Ensure user view links are white */
-        }
-
-        .sidenav-custom .material-icons {
-            color: white !important; /* Ensure all material icons are white */
-        }
+      background-color: #0D47A1 !important;
+      color: white !important;
+    }
+    .sidenav-custom .user-view {
+      background-color: #1565C0;
+    }
+    .sidenav-custom a, .sidenav-custom .material-icons {
+      color: white !important;
+    }
     </style>
 
       <script type="text/javascript">
@@ -81,19 +71,6 @@ if (!isset($_SESSION['data']['nis'])) {
         } );
       
       </script>
-      <script>
-        window.addEventListener('resize', function(){
-          if (window.innerWidth < 768) {
-            document.getElementById('sidenav').style.display = 'none';
-          } 
-        }); 
-
-        document.addEventListener('click', function(event){
-          let sidenav = document.getElementById('sidenav');
-          if (!sidenav.contains(event.target) && window.innerWidth < 768) {
-            sidenav.style.display = 'none';
-          }
-        });
       </script>
 
     </head>
@@ -174,6 +151,31 @@ if (!isset($_SESSION['data']['nis'])) {
         });
 
       </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var sidenav = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(sidenav, {
+        edge: 'left',
+        draggable: true
+      });
+
+      function toggleSidenavFixed() {
+        var sidenavElement = document.getElementById('slide-out');
+        if (window.innerWidth >= 992) { // Desktop size
+          sidenavElement.classList.add('sidenav-fixed');
+        } else { // Mobile size
+          sidenavElement.classList.remove('sidenav-fixed');
+          instances[0].close(); // Tutup sidenav jika terbuka di mobile
+        }
+      }
+
+      // Toggle sidenav saat halaman dimuat dan saat di-resize
+      toggleSidenavFixed();
+      window.addEventListener('resize', toggleSidenavFixed);
+    });
+  </script>
 
     </body>
   </html>
