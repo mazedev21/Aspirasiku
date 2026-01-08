@@ -1,48 +1,55 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" href="css/materialize.css">
 <link rel="stylesheet" href="css/responsive.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-   .cont {
+.page-wrapper {
+  min-height: 100vh;
+  min-height: 100dvh; /* aman mobile */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.cont {
       padding: 50px;
       width: 40%;
+      max-width: 420px;
       margin: 0 auto;
-      margin-top: 4%;
-      background-color: rgba(21, 101, 192, 0.1); /* Nilai alpha (0.7) menentukan tingkat transparansi */
+      margin-top: 5px;
+      background-color: rgba(50, 50, 50, 0.1); /* Nilai alpha (0.7) menentukan tingkat transparansi */
       border-radius: 10px; /* Untuk membuat sudut kotak */
    }
-	    /* Tambahkan media queries untuk ukuran layar tertentu */
-    @media screen and (max-width: 768px) {
-        .cont {
-            width: 90%; /* Atur lebar yang berbeda untuk layar yang lebih kecil */
-        }
-	}
+/* Mobile khusus */
+@media only screen and (max-width: 600px) {
+  .cont {
+    min-width: 100%;
+    padding: 16px;
+  }
+}
 </style>
 <body style="background: url(img/bgweb1.jpg); background-size: cover;">
-<div class="cont">
-<h3 style="text-align: center;" class="blue-text">Menu Login</h3>
-<br><center><p>Dikembangkan oleh <a href='https://bit.ly/mpkbegarlist' title='MPK SMAN 2 Magelang' target='_blank'>MPK SMAN 2 Magelang</a></p></center>
-
-	<form method="POST">
-		<div class="input_field">
-			<label for="username">Username</label>
-			<input id="username" type="text" name="username" required>
-		</div>
-		<div class="input_field">
-			<label for="password">Password</label>
-			<input id="password" type="password" name="password" required>
-		</div>
-		<input type="submit" name="login" value="Login" class="btn blue" style="width: 100%;">
-	</form>
-	<center><p>Belum punya akun? <a href=signup.php >Daftar Disini</a></p></center>
+<div class="page-wrapper">
+	<div class="cont">
+	<h3 style="text-align: center;" class="blue-text">Menu Login</h3>
+	<br><center><p>Dikembangkan oleh <a href='https://bit.ly/mpkbegarlist' title='MPK SMAN 2 Magelang' target='_blank'>MPK SMAN 2 Magelang</a></p></center>
+	
+		<form method="POST">
+			<div class="input_field">
+				<label for="username">Username</label>
+				<input id="username" type="text" name="username" required>
+			</div>
+			<div class="input_field">
+				<label for="password">Password</label>
+				<input id="password" type="password" name="password" required>
+			</div>
+			<input type="submit" name="login" value="Login" class="btn blue" style="width: 100%;">
+		</form>
+		<center><p>Belum punya akun? <a href=signup.php >Daftar Disini</a></p></center>
+	</div>`
 </div>
 <?php 
-	$servername = "localhost";
-	$username = "root"; // Ganti dengan username database Anda
-	$password = ""; // Ganti dengan password database Anda
-	$dbname = "aspirasiku";
-	
-	// Membuat koneksi
-	$koneksi = new mysqli($servername, $username, $password, $dbname);
+	require_once __DIR__ . "/conn/koneksi.php";
 	
 	// Memeriksa koneksi
 	if ($koneksi->connect_error) {

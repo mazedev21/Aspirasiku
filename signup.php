@@ -2,12 +2,24 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" href="css/materialize.css">
 <link rel="stylesheet" href="css/responsive.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+    /* Wrapper full screen */
+.page-wrapper {
+  min-height: 100vh;
+  min-height: 100dvh; /* aman mobile */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
    .cont {
       padding: 50px;
       width: 40%;
+      max-width: 420px;
       margin: 0 auto;
-      margin-top: 10%;
+      margin-top: 5px;
       background-color: rgba(50, 50, 50, 0.1); /* Nilai alpha (0.7) menentukan tingkat transparansi */
       border-radius: 10px; /* Untuk membuat sudut kotak */
    } /* css untuk tabel pendaftaran */
@@ -23,40 +35,25 @@
     border-radius: 5px;
     z-index: 9999;
 } /*css untuk notifikasi*/
-.loading {
-    display: none;
-    position: absolute;
-    top: 50px; /* Atur sesuai dengan posisi notifikasi */
-    left: 50%;
-    transform: translateX(-50%);
-} /*css untuk ikon loading*/
 
-.loading img {
-    width: 50px; /* Sesuaikan ukuran ikon loading */
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 30px;
+  cursor: pointer;
+  color: #9e9e9e;
 }
-#togglePassword{
-    position: absolute; /* Mengatur posisi tombol */
-    top: 70%; /* Mengatur posisi vertikal ke tengah */
-    right: 50px; /* Mengatur posisi horizontal ke pojok kanan */
-    transform: translateY(0%); /* Menggeser tombol ke atas setengah tinggi */
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size : 10px;
-    display : flex;
-    justify-content : center;
+
+.input-field .suffix {
+  right: 10px;
 }
-    /* Media query untuk perangkat mobile */
-    @media only screen and (max-width: 600px) {
-      .cont {
-        width: 90%;
-        padding: 15px;
-        margin-top: 5%;
-      }
-      #togglePassword {
-        right: 10px;
-      }
-    }
+/* Mobile khusus */
+@media only screen and (max-width: 600px) {
+  .cont {
+    min-width: 100%;
+    padding: 16px;
+  }
+}
 </style>
 <script>
     function showNotification(message) {
@@ -71,40 +68,67 @@
     }, 2000); // Kotak notifikasi akan hilang setelah 3 detik
     } // Script JS untuk notifikasi pendaftaran berhasil
 </script>
-<body style="background: url(img/bgweb1.jpg); background-size: cover;">
+<body style="background: url(img/bgweb1.jpg); background-size: cover; height: 100vh;">
 <html>
 <div id="notification" class="notification"></div>
-<div id="loading" class="loading">
-    <img src="img/loading.gif" alt="Tunggu Sebentar...">
+<div class="page-wrapper">
+  <div class="cont">
+
+    <h3 class="blue-text center">Daftar Akun</h3>
+
+    <p class="center">
+      Dikembangkan oleh
+      <a href="https://bit.ly/mpkbegarlist" target="_blank">
+        MPK SMAN 2 Magelang
+      </a>
+    </p>
+
+    <form method="POST">
+      <div class="input_field">
+        <label for="username">Username</label>
+        <input id="username" type="text" name="username" required>
+      </div>
+
+      <div class="input_field">
+        <label for="nama">Nama Lengkap</label>
+        <input id="nama" type="text" name="nama" required>
+      </div>
+
+      <div class="input_field">
+        <label for="nis">Nomor Induk Siswa (NIS)</label>
+        <input id="nis" type="number" name="nis" required>
+      </div>
+
+      <div class="input_field" style="position: relative;">
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" required>
+
+        <i class="material-icons toggle-password"
+           onclick="togglePassword()"
+           id="toggleIcon">
+          visibility
+        </i>
+      </div>
+
+      <input type="submit"
+             name="daftar"
+             value="Daftar"
+             class="btn blue"
+             style="width:100%;">
+    </form>
+
+    <p class="center">
+      Kembali ke Halaman <a href="login.php">Login</a>
+    </p>
+
+  </div>
 </div>
-<div class="cont">
-<h3 style="text-align: center;" class="blue-text">Daftar Akun</h3>
-<br><center><p>Dikembangkan oleh <a href='https://bit.ly/mpkbegarlist' title='MPK SMAN 2 Magelang' target='_blank'>MPK SMAN 2 Magelang</a></p></center>
-	<form method="POST">
-		<div class="input_field">
-			<label for="username">Username</label>
-			<input id="username" type="text" name="username" required>
-		</div>
-        <div class="input_field">
-            <label for="nama">Nama Lengkap</label>
-            <input id="nama" type="text" name="nama" required>
-        </div>
-        <div class="input_field">
-            <label for="nis">Nomor Induk Siswa (NIS)</label>
-            <input id="nis" type="number" name="nis" required>
-        </div>
-		<div class="input_field">
-			<label for="password">Password</label>
-			<input id="password" type="password" name="password" required >
-            <button type="button" id="togglePassword" class="btn blue" style="width: 15%;">Lihat</button>
-		</div>
-		<input type="submit" name="daftar" value="daftar" class="btn blue" style="width: 100%;">
-	</form>
-    <center><p>Kembali ke Halaman <a href=login.php>Login</a></p></center>
-</div>
+
 </html>
 
 <?php
+require_once __DIR__ . "/conn/koneksi.php";
+
 // Periksa apakah data dikirimkan melalui metode POST
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST['username'];
@@ -116,10 +140,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if (empty($username) || empty($nama) || empty($nis) ||empty($password)) {
         echo "Semua bidang harus diisi.";
     } else {
-    // Koneksi ke database
-    $servername = "localhost";
-    $dbname = "aspirasiku";
-    $koneksi = new mysqli($servername, 'henji', '',$dbname);
 
     // Periksa koneksi
     if ($koneksi->connect_error) {
@@ -154,18 +174,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 
 <script>
-    var togglePassword = document.getElementById('togglePassword');
-    var passwordInput = document.getElementById('password');
-    
-    togglePassword.addEventListener('click', function() {
-        var passwordFieldType = passwordInput.getAttribute('type');
-        if (passwordFieldType === 'password') {
-            passwordInput.setAttribute('type', 'text');
-            this.textContent = 'Sembunyikan';
-        } else {
-            passwordInput.setAttribute('type', 'password');
-            this.textContent = 'Lihat';
-        }
-    });
+function togglePassword() {
+  const password = document.getElementById("password");
+  const icon = document.getElementById("toggleIcon");
+
+  if (password.type === "password") {
+    password.type = "text";
+    icon.textContent = "visibility_off";
+  } else {
+    password.type = "password";
+    icon.textContent = "visibility";
+  }
+}
 </script>
 </body>
